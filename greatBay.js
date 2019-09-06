@@ -1,7 +1,12 @@
 var inquirer = require('inquirer');
 var mysql = require('mysql');
 
-var userChoice;
+var connection = mysql.createConnection({
+    host     : 'localhost',
+    user     : 'root',
+    password : 'Grocero8',
+    database : 'greatBay_DB'
+  });
 
 inquirer
     .prompt([{
@@ -28,6 +33,25 @@ inquirer
 
 function postItem() {
     console.log("post");
+    inquirer
+        .prompt([
+            {
+                name: 'item_name',
+                message: 'What is the item called?',
+              },
+              {
+                  name: 'category',
+                  message: 'What is the category!!!!!'
+              },
+              {
+                  name: 'bid',
+                  message: "What is your bid?"
+              }
+            ])
+            .then(function(answer) {
+                console.log(answer);
+                
+            });
 }
 
 function postBid() {
